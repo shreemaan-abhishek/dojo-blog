@@ -4,11 +4,6 @@ import BlogList from "./BlogList";
 const Home = () => {
   const [blogs, setBlogs] = useState(null)
 
-  const deleteBlog = (id) => {
-      const newData = blogs.filter((blog) => blog.id !== id)
-      setBlogs(newData)
-  }
-
   useEffect(() => {
     fetch("http://localhost:8000/blogs")
     .then( res => {
@@ -18,7 +13,7 @@ const Home = () => {
   }, [])
   return (
     <div className="home">
-        { blogs && <BlogList blogs={blogs} title="All Blogs" deleteBlog={deleteBlog} />}
+        { blogs && <BlogList blogs={blogs} title="All Blogs" />}
         {/* <BlogList blogs={blogs.filter( (blog) => blog.author ===  'mario')} title="Mario's Blogs" deleteBlog={deleteBlog} /> */}
         
     </div>
